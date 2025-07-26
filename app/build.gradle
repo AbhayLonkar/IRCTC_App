@@ -21,6 +21,8 @@ dependencies {
 
     // This dependency is used by the application.
     implementation libs.guava
+    // For mapping json data
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.12.6"
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

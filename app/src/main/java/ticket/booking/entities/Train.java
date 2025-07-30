@@ -1,16 +1,28 @@
 package ticket.booking.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+
 import java.util.List;
 import java.util.Map;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class Train {
+
     private String trainId;
+
     private String trainNo;
+
     private List<List<Integer>> seats;
+
     private Map<String, String> stationTimes;
+
     private List<String> stations;
 
-    public Train() {}
+    public Train() {
+    }
 
     public Train(String trainId, String trainNo, List<List<Integer>> seats, Map<String, String> stationTimes, List<String> stations) {
         this.trainId = trainId;
@@ -20,12 +32,20 @@ public class Train {
         this.stations = stations;
     }
 
+    public Train(Train train) {
+        this.trainId = train.trainId;
+        this.trainNo = train.trainNo;
+        this.seats = train.seats;
+        this.stationTimes = train.stationTimes;
+        this.stations = train.stations;
+    }
+
     public List<String> getStations() {
-        return this.stations;
+        return stations;
     }
 
     public List<List<Integer>> getSeats() {
-        return this.seats;
+        return seats;
     }
 
     public void setSeats(List<List<Integer>> seats) {
@@ -33,15 +53,15 @@ public class Train {
     }
 
     public String getTrainId() {
-        return this.trainId;
+        return trainId;
     }
 
     public Map<String, String> getStationTimes() {
-        return this.stationTimes;
+        return stationTimes;
     }
 
     public String getTrainNo() {
-        return this.trainNo;
+        return trainNo;
     }
 
     public void setTrainNo(String trainNo) {
@@ -61,8 +81,6 @@ public class Train {
     }
 
     public String getTrainInfo() {
-        return String.format("Train ID: %s Train No: %s",trainId, trainNo);
+        return String.format("Train ID: %s Train No: %s", trainId, trainNo);
     }
-
-
 }
